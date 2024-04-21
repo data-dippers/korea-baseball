@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "mlb-dashboard"
+version = "0.1.0"
+description = ""
+authors = ["CoodingPenguin <coodingpenguin@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-cloud-bigquery = "^3.21.0"
+mlb-statsapi = "^1.7.1"
+pandas = "^2.2.2"
+pydantic = "^2.7.0"
+pandas-gbq = "^0.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
