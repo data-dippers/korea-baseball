@@ -8,6 +8,8 @@ terraform apply
 ```
 	주의점 : location을 처음에는 asia-northeast3(서울)로 하였으나, 해당지역에 설정된 SSD 총 사용량 한도를 초과했다는 오류가 있었고, 리소스 여유가 있는 지역으로 다시 생성을 진행하였습니다. (머신 타입도 더 좋은 걸로 바꿨습니다.)
 
+---
+
 ### Helm을 이용한 Airflow Deploy
 1. gcloud shell에 접속합니다.
 2. helm repo를 추가합니다.
@@ -73,8 +75,15 @@ kubectl get all
 
 # {external_ip}:8080으로 접속
 ```
-### 허용된 IP만 접속 가능하도록 수정
+12. 접속 및 DAG 실행 테스트
+<img width="1720" alt="image" src="https://github.com/data-dippers/mlb-dashboard/assets/87741503/48541a38-18fb-4033-bd79-c630970d3523">
 
+---
+
+### 허용된 IP만 접속 가능하도록 수정
+(설정 및 테스트 중)
+
+---
 
 ### 참고
 - https://mjs1995.tistory.com/296
