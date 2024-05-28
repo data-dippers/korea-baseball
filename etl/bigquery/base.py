@@ -29,17 +29,13 @@ class FieldType(StrEnum):
 
 
 class Column(BaseModel):
-    """
-    column class
-    """
+    """column class"""
     name: str
     type: FieldType
 
 
 class Schema(RootModel):
-    """
-    schema class
-    """
+    """schema class"""
     root: list[Column]
 
     def __iter__(self):
@@ -89,14 +85,14 @@ class BaseJob(metaclass=ABCMeta):
         return f"<cls:{self.__class__.__name__}>"
 
     @abstractmethod
-    def extract(self) -> pd.DataFrame:
+    def sourcing(self) -> dict:
         pass
 
     @abstractmethod
-    def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+    def transform(self, data: dict) -> pd.DataFrame:
         pass
 
-    def load(self, df: pd.DataFrame):
+    def sink(self, df: pd.DataFrame):
         df.to_gbq(
             destination_table=self.table_id,
             project_id=self.project_id,
@@ -106,6 +102,6 @@ class BaseJob(metaclass=ABCMeta):
         )
 
     def run(self):
-        df = self.extract()
-        df = self.transform(df)
-        self.load(df)
+        data = self.sourcing()
+        df = self.transform(data)
+        self.sink(df)
